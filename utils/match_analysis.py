@@ -6,17 +6,17 @@ def match_analysis(match: dict):
     home_club = {
         "name": match["clubs"]["home"],
         "points": 0,
-        "goals": match["goals"]["home"],
+        "goals": int(match["goals"]["home"]),
         "coach": match["coach"]["home"],
-        "goals_taken": match["goals"]["away"],
+        "goals_taken": int(match["goals"]["away"]),
         "wins": 0,
     }
     away_club = {
         "name": match["clubs"]["away"],
         "points": 0,
-        "goals": match["goals"]["away"],
+        "goals": int(match["goals"]["away"]),
         "coach": match["coach"]["away"],
-        "goals_taken": match["goals"]["home"],
+        "goals_taken": int(match["goals"]["home"]),
         "wins": 0,
     }
 
