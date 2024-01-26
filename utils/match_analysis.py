@@ -7,7 +7,8 @@ def match_analysis(match: dict):
         "name": match["clubs"]["home"],
         "points": 0,
         "goals": int(match["goals"]["home"]),
-        "coach": match["coach"]["home"],
+        "current_coach": match["coach"]["home"],
+        "coachs": [],
         "goals_taken": int(match["goals"]["away"]),
         "wins": 0,
     }
@@ -15,7 +16,8 @@ def match_analysis(match: dict):
         "name": match["clubs"]["away"],
         "points": 0,
         "goals": int(match["goals"]["away"]),
-        "coach": match["coach"]["away"],
+        "current_coach": match["coach"]["away"],
+        "coachs": [],
         "goals_taken": int(match["goals"]["home"]),
         "wins": 0,
     }
