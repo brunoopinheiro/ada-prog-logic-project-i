@@ -12,10 +12,11 @@ def championship_parser(input_json: dict):
     output_table = []
     rodadas = input_json.keys()
     for rodada in rodadas:
-        partidas = input_json[rodada]
+        partidas: dict = input_json[rodada]
         n_partidas = partidas.keys()
         for partida in n_partidas:
-            home, away = ma.match_analysis(n_partidas[partida])
+            partida_atual = partidas[partida]
+            home, away = ma.match_analysis(partida_atual)
             # Temporario
             output_table.append(home)
             output_table.append(away)
