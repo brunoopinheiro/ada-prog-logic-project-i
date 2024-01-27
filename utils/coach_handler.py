@@ -1,4 +1,4 @@
-def coach_handler(team: dict, coach_name: str):
+def coach_handler(team: dict, coach_name: str, points_obtained: int = 0):
     """
     Recebe o dict equivalente ao time,
     e o nome do técnico da partida.
@@ -10,9 +10,12 @@ def coach_handler(team: dict, coach_name: str):
     if coach_name in coachs:
         coach_index = coachs.index(coach_name)
         coachs_list[coach_index]["matches"] += 1
+        coachs_list[coach_index]["points_obtained"] += points_obtained
 
     else:
-        team["coachs"].append({"name": coach_name, "matches": 1})
+        team["coachs"].append(
+            {"name": coach_name, "matches": 1, "points_obtained": points_obtained}
+        )
 
     return team
 
@@ -30,3 +33,16 @@ def lasting_coach(club: dict):
             lasting_index = index
 
     return coachs[lasting_index]
+
+
+def coachs_list(champ_table: list[dict]):
+    """
+    Recebe a tabela final do campeonato,
+    retorna a lista de técnicos que participaram
+    do campeonato.
+    """
+    c_list = []
+    for team in champ_table:
+        c_list.extend(team["coachs"])
+
+    return c_list
