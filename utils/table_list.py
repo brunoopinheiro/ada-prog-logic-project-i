@@ -25,12 +25,14 @@ def championship_result(champ_table: list[dict]):
 
 def table_list(team_update: dict, team_list: list = []):
     """
-    Recebe as informações de um time,
+    Recebe as informações de um time pós partida,
     e uma lista de times.
     Atualiza a lista, garantindo a unicidade de cada time.
     """
     if len(team_list) == 0:
-        team = ch.coach_handler(team_update, team_update["current_coach"])
+        team = ch.coach_handler(
+            team_update, team_update["current_coach"], team_update["points"]
+        )
         team_list.append(team)
         return team_list
 
@@ -42,11 +44,15 @@ def table_list(team_update: dict, team_list: list = []):
         team_to_update["goals"] += team_update["goals"]
         team_to_update["goals_taken"] += team_update["goals_taken"]
         team_to_update["wins"] += team_update["wins"]
-        team = ch.coach_handler(team_to_update, team_update["current_coach"])
+        team = ch.coach_handler(
+            team_to_update, team_update["current_coach"], team_update["points"]
+        )
         team_list[team_index] = team
         return team_list
     else:
-        team = ch.coach_handler(team_update, team_update["current_coach"])
+        team = ch.coach_handler(
+            team_update, team_update["current_coach"], team_update["points"]
+        )
         team_list.append(team_update)
         return team_list
 
