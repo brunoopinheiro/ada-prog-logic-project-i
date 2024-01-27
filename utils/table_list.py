@@ -21,7 +21,6 @@ def championship_result(champ_table: list[dict]):
     ]
     sorted_table = reduce(apply_sorting, sorting_criteria, champ_table)
     return sorted_table
-    # sorted(tabela_br, key=lambda time: time["points"], reverse=True)
 
 
 def table_list(team_update: dict, team_list: list = []):
