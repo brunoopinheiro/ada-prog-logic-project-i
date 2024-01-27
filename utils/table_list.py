@@ -1,4 +1,27 @@
 from utils import coach_handler as ch
+from functools import reduce
+
+
+def apply_sorting(champ_table: list[dict], rule):
+    return sorted(champ_table, key=rule, reverse=True)
+
+
+def championship_result(champ_table: list[dict]):
+    """
+    Recebe a lista final do campeonato,
+    ordena de acordo com os critérios estabelecidos:
+    [pontos > nº vitorias > saldo de gols > gols pro]
+    Retorna lista ordenada.
+    """
+    sorting_criteria = [
+        lambda team: team["goals"],
+        lambda team: team["goals_difference"],
+        lambda team: team["wins"],
+        lambda team: team["points"],
+    ]
+    sorted_table = reduce(apply_sorting, sorting_criteria, champ_table)
+    return sorted_table
+    # sorted(tabela_br, key=lambda time: time["points"], reverse=True)
 
 
 def table_list(team_update: dict, team_list: list = []):
@@ -27,3 +50,14 @@ def table_list(team_update: dict, team_list: list = []):
         team = ch.coach_handler(team_update, team_update["current_coach"])
         team_list.append(team_update)
         return team_list
+
+
+def goals_difference(team: dict):
+    """
+    Recebe o dict de um time,
+    e calcula o saldo de gols de cada time,
+    adicionando ao dict correspondente.
+    """
+    difference = team["goals"] - team["goals_taken"]
+    team["goals_difference"] = difference
+    return team
