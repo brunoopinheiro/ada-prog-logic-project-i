@@ -15,3 +15,16 @@ def coach_handler(team: dict, coach_name: str):
         team["coachs"].append({"name": coach_name, "matches": 1})
 
     return team
+
+
+def lasting_coach(club: dict):
+    """
+    Recebe o dicionário que representa um time,
+    Retorna o objeto com o técnico mais duradouro
+    no comando da equipe.
+    """
+    coachs = club["coachs"]
+    sorted(coachs, key=lambda c: c["matches"], reverse=True)
+    return coachs[0]
+
+    # sorted(tabela_br, key=lambda time: time["points"], reverse=True)
