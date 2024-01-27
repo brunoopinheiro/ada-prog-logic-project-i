@@ -23,8 +23,10 @@ def lasting_coach(club: dict):
     Retorna o objeto com o técnico mais duradouro
     no comando da equipe.
     """
-    coachs = club["coachs"]
-    sorted(coachs, key=lambda c: c["matches"], reverse=True)
-    return coachs[0]
+    coachs = [(coach["name"], coach["matches"]) for coach in club["coachs"]]
+    lasting_index = 0
+    for index, (_coach, matches) in enumerate(coachs):
+        if matches > coachs[lasting_index][1]:
+            lasting_index = index
 
-    # sorted(tabela_br, key=lambda time: time["points"], reverse=True)
+    return coachs[lasting_index]
