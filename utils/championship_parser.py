@@ -6,7 +6,7 @@ from utils import table_list as tl
 def championship_parser(input_json: dict):
     """
     Função principal do projeto.
-    Recebe o dict de input do campeonato,
+    Recebe o dataframe de input do campeonato,
     e monta a tabela final com a classificação dos times.
     Output ordenado seguindo os critérios de classificação do campeonato.
     """
