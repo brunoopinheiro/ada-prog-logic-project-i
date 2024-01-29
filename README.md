@@ -25,7 +25,7 @@ _Usando Powershell ou bash_
 - Instale as dependências do `pandas` com o comando `pip install -r requirements.txt`
 
 ### Execução
-O notebook chamado `projeto_brasileirao.ipynb` contem todo o passo a passo, desde a apresentação do problema, até a solução do projeto.
+O notebook chamado [projeto_brasileirao.ipynb](./projeto_brasileirao.ipynb) contem todo o passo a passo, desde a apresentação do problema, até a solução do projeto.
 
 Por uma questão de organização, as bases de dados em `.json` estão contidas na pasta `./input_files`. Da mesma forma, as funções criadas para lidar com os dados, utilizadas no _notebook_ estão organizadas na pasta `./utils`.
 
